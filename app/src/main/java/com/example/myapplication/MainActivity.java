@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //one of the primary methods we call that connects layout files and java code
-        //R generally means all the resources, layout means layout folder then within that the name of it
 
         secret = randy.nextInt(100) + 1;
         Log.d("secret", secret + " "); //log functionality for debugging
