@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HI_LO</string>
+    <string name="edit_message">Enter a number 1 - 100</string>
+    <string name="button_send">SUBMIT</string>
+</resources>
