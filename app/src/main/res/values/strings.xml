@@ -2,4 +2,5 @@
     <string name="app_name">Time Zone Converter</string>
     <string name="edit_message">..</string>
     <string name="button_convert">Convert</string>
+    <string name="original_time">Original Time:</string>
 </resources>
