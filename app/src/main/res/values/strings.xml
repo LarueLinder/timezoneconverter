@@ -3,4 +3,6 @@
     <string name="edit_message">..</string>
     <string name="button_convert">Convert</string>
     <string name="original_time">Original Time:</string>
+    <string name="time_zone">Current Time Zone:</string>
+    <string name="home_zone">Home Time Zone:</string>
 </resources>
