@@ -46,16 +46,6 @@
         app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <DigitalClock
-
-        android:id="@+id/digitalClock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timePickerButton" />
-
     <EditText
         android:id="@+id/home_zone"
         android:layout_width="wrap_content"
