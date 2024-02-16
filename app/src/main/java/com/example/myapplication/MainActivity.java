@@ -2,53 +2,53 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
+import java.util.Locale;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
 
-    Random randy = new Random();
-    private int secret;
-    private int guess;
+    Button timeButton;
 
-    //on create is the first method that gets executed
+    int hour;
+    int min;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); //one of the primary methods we call that connects layout files and java code
+        setContentView(R.layout.activity_main);
+        timeButton = findViewById(R.id.timePickerButton);
 
-        secret = randy.nextInt(100) + 1;
-        Log.d("secret", secret + " "); //log functionality for debugging
     }
 
-    /** Called when the user taps the Send button */
-    //function is called w/ onClick in activity_main when button is clicked
-    public void sendMessage(View view) {
-        //to move from one activity to another we create an intent and then move to that
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        //we get the text out here
-        EditText editText = (EditText) findViewById(R.id.editText);
+    //handles the pop up time picker for users to pick the time
+    public void popTimePicker(View view) {
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                hour = hourOfDay;
+                min = minute;
+                timeButton.setText(String.format(Locale.getDefault(), "%02d:%02d",hour, min));
+            }
+        };
 
-        guess = Integer.parseInt(editText.getText().toString());
-        String message = "correct!";
+        //int style = AlertDialog.THEME_HOLO_DARK; //can delete/change style
 
-        if (guess < secret ) {
-            message = "go higher";
-        } else if (guess > secret) {
-            message = "go lower";
-        }
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, min, true);
 
-        intent.putExtra(EXTRA_MESSAGE, message); //takes the current message and puts it in the intent w/ a unique label
-        //inten extras are maps key is a string value is whatever value corresponds w that
-        //when we start the acitivty we pass in the intent so it comes out
-        startActivity(intent);
+        timePickerDialog.setTitle("Select Time");
+        timePickerDialog.show();
+
     }
 }
-//new comment
+
