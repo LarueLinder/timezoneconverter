@@ -5,6 +5,7 @@
     <string name="original_time">Original Time:</string>
     <string name="time_zone">Current Time Zone:</string>
     <string name="home_zone">Home Time Zone:</string>
+    <string name="home_city"> Home City: </string>
 
     <string-array name="timezone_array">
         <item>America/New York</item>
