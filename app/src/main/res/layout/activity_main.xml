@@ -43,14 +43,10 @@
         android:text="@string/original_time"
         app:layout_constraintBottom_toTopOf="@+id/home_zone"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="195dp" />
-=======
-        app:layout_constraintHorizontal_bias="0.447"
-        app:layout_constraintStart_toStartOf="parent" />
->>>>>>> refs/remotes/origin/master
+
 
     <DigitalClock
 
@@ -66,23 +62,16 @@
         android:id="@+id/home_zone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_marginTop="48dp"
-=======
         android:layout_marginBottom="424dp"
->>>>>>> refs/remotes/origin/master
         android:ems="10"
         android:inputType="text"
         android:text="@string/home_zone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/digitalClock" />
-=======
-        app:layout_constraintStart_toStartOf="parent" />
->>>>>>> refs/remotes/origin/master
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
