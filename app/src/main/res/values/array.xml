@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="timezone_array">
+        <item>America/New York</item>
+        <item>America/Los Angeles</item>
+        <item>Europe/Berlin</item>
+        <item>Europe/Istanbul</item>
+        <item>Asia/Singapore</item>
+        <item>Asia/Tokyo</item>
+        <item>Australia/Canberra</item>
+        <item>America/Honolulu</item>
+    </string-array>
+</resources>
