@@ -11,10 +11,12 @@
     >
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/currTimeZoneDropdown"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/currentZoneText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteX="1dp" />
 
     <EditText
@@ -24,23 +26,25 @@
         android:ems="10"
         android:inputType="text"
         android:text="@string/time_zone"
-        app:layout_constraintBottom_toTopOf="@+id/originalTimeText"
+        app:layout_constraintBottom_toTopOf="@+id/timePickerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.492" />
 
-    <EditText
-        android:id="@+id/originalTimeText"
+    <Button
+        android:id="@+id/timePickerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:ems="10"
-        android:inputType="text"
+        android:onClick="popTimePicker"
         android:singleLine="false"
         android:text="@string/original_time"
+        app:layout_constraintBottom_toTopOf="@+id/home_zone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="231dp" />
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <DigitalClock
 
@@ -50,18 +54,19 @@
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/originalTimeText" />
+        app:layout_constraintTop_toBottomOf="@+id/timePickerButton" />
 
     <EditText
         android:id="@+id/home_zone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="424dp"
         android:ems="10"
         android:inputType="text"
         android:text="@string/home_zone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="415dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
