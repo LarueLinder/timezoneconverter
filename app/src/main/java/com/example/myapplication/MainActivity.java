@@ -20,14 +20,25 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
 
     Button timeButton;
-
     int hour;
     int min;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         timeButton = findViewById(R.id.timePickerButton);
+
+        Button settingButton = findViewById(R.id.settingsButton);
+
+        settingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create an Intent to start the SettingsActivity
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -42,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        //int style = AlertDialog.THEME_HOLO_DARK; //can delete/change style
+        int style = AlertDialog.THEME_HOLO_DARK; //can delete/change style
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, min, true);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, style, onTimeSetListener, hour, min, true);
 
         timePickerDialog.setTitle("Select Time");
         timePickerDialog.show();
