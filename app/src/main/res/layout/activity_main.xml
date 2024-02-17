@@ -4,91 +4,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/rectangle"
+    android:background="@color/purple_200"
+    tools:context=".MainActivity">
 
 
-    >
+    <View
+        android:id="@+id/rectangleView_1"
+        android:layout_width="341dp"
+        android:layout_height="116dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="52dp"
+        android:background="#F1E9E9"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.152" />
+
+    <View
+        android:id="@+id/rectangleView_2"
+        android:layout_width="341dp"
+        android:layout_height="116dp"
+        android:layout_centerVertical="true"
+        android:background="#F1E9E9"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/convertTimeLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectangleView_1"
+        app:layout_constraintVertical_bias="0.134" />
+
+    <View
+        android:id="@+id/rectangleView_3"
+        android:layout_width="341dp"
+        android:layout_height="116dp"
+        android:layout_centerVertical="true"
+        android:background="#F1E9E9"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectangleView_2"
+        app:layout_constraintVertical_bias="0.065" />
+
+    <View
+        android:id="@+id/rectangleView_4"
+        android:layout_width="341dp"
+        android:layout_height="116dp"
+        android:layout_centerVertical="true"
+        android:background="#F1E9E9"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectangleView_3"
+        app:layout_constraintVertical_bias="0.081" />
 
     <Spinner
         android:id="@+id/currTimeZoneDropdown"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/currentZoneText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteX="1dp" />
+        android:layout_width="206dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangleView_1"
+        app:layout_constraintEnd_toEndOf="@+id/rectangleView_1"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/rectangleView_1"
+        app:layout_constraintTop_toTopOf="@+id/rectangleView_1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/currentZoneText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:text="@string/time_zone"
-        app:layout_constraintBottom_toTopOf="@+id/timePickerButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.492" />
+        app:layout_constraintBottom_toTopOf="@+id/currTimeZoneDropdown"
+        app:layout_constraintEnd_toEndOf="@+id/rectangleView_1"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/rectangleView_1"
+        app:layout_constraintTop_toTopOf="@+id/rectangleView_1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/timePickerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:onClick="popTimePicker"
         android:singleLine="false"
         android:text="@string/original_time"
         app:layout_constraintBottom_toTopOf="@+id/home_zone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/rectangleView_2"
+        app:layout_constraintStart_toStartOf="@+id/rectangleView_2"
+        app:layout_constraintTop_toBottomOf="@+id/rectangleView_1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/home_zone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="424dp"
+        android:layout_marginBottom="368dp"
         android:ems="10"
         android:text="@string/home_zone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.376"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <ImageButton
         android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="318dp"
-        android:text="Settings"
+        android:layout_marginBottom="28dp"
         android:background="@color/lightGray"
         android:backgroundTint="@color/lightGray"
+        android:contentDescription="Settings"
+        android:text="Settings"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.854"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_zone"
-        app:layout_constraintVertical_bias="0.0" />
+        app:srcCompat="@android:drawable/ic_btn_speak_now" />
 
     <ImageButton
         android:id="@+id/clockConvertButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:contentDescription="convert"
+        android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/settingsButton"
+        app:layout_constraintHorizontal_bias="0.703"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rectangleView_4"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:drawable/ic_menu_recent_history" />
 
     <TextView
         android:id="@+id/convertTimeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="76dp"
         android:text="@string/converted_label"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_zone" />
 
@@ -102,6 +164,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/convertTimeLabel"
         app:layout_constraintVertical_bias="0.141" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Time Zone Converter"
+        android:textColor="#FDFBFB"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

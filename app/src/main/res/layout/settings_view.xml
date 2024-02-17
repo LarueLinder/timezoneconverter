@@ -15,6 +15,7 @@
         android:text="@string/home_city"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
