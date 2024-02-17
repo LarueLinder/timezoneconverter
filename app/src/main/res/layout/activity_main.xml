@@ -16,7 +16,8 @@
         android:layout_marginEnd="52dp"
         android:background="#F1E9E9"
         android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rectangleView_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.152" />
@@ -26,42 +27,44 @@
         android:layout_width="341dp"
         android:layout_height="116dp"
         android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
         android:background="#F1E9E9"
         android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/convertTimeLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rectangleView_1"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintBottom_toTopOf="@+id/rectangleView_3"
+        />
 
     <View
         android:id="@+id/rectangleView_3"
         android:layout_width="341dp"
         android:layout_height="116dp"
         android:layout_centerVertical="true"
+        android:layout_marginTop="40dp"
         android:background="#F1E9E9"
         android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rectangleView_2"
-        app:layout_constraintVertical_bias="0.065" />
+        app:layout_constraintBottom_toTopOf="@+id/rectangleView_4"
+        />
 
     <View
         android:id="@+id/rectangleView_4"
         android:layout_width="341dp"
         android:layout_height="116dp"
         android:layout_centerVertical="true"
+        android:layout_marginTop="20dp"
         android:background="#F1E9E9"
         android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rectangleView_3"
-        app:layout_constraintVertical_bias="0.081" />
+        app:layout_constraintBottom_toTopOf="@+id/clockConvertButton"/>
 
     <Spinner
         android:id="@+id/currTimeZoneDropdown"
@@ -92,28 +95,26 @@
         android:id="@+id/timePickerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="48dp"
         android:ems="10"
         android:onClick="popTimePicker"
         android:singleLine="false"
         android:text="@string/original_time"
-        app:layout_constraintBottom_toTopOf="@+id/home_zone"
         app:layout_constraintEnd_toEndOf="@+id/rectangleView_2"
         app:layout_constraintStart_toStartOf="@+id/rectangleView_2"
-        app:layout_constraintTop_toBottomOf="@+id/rectangleView_1"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/rectangleView_2" />
 
     <TextView
         android:id="@+id/home_zone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="368dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:text="@string/home_zone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.376"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/rectangleView_3"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/rectangleView_3"
+        app:layout_constraintTop_toTopOf="@+id/rectangleView_3" />
 
     <ImageButton
         android:id="@+id/settingsButton"
@@ -127,78 +128,57 @@
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_btn_speak_now" />
+        app:srcCompat="@drawable/baseline_settings_24" />
 
     <ImageButton
         android:id="@+id/clockConvertButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="convert"
         android:layout_marginBottom="28dp"
+        android:contentDescription="convert"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/settingsButton"
-        app:layout_constraintHorizontal_bias="0.703"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rectangleView_4"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.682"
         app:srcCompat="@android:drawable/ic_menu_recent_history" />
-
-    <TextView
-        android:id="@+id/convertTimeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:text="@string/converted_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.441"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_zone" />
 
     <TextView
         android:id="@+id/convertedTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/converted_time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/convertTimeLabel"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintBottom_toBottomOf="@+id/rectangleView_4"
+        app:layout_constraintEnd_toEndOf="@+id/rectangleView_4"
+        app:layout_constraintStart_toStartOf="@+id/rectangleView_4"
+        app:layout_constraintTop_toTopOf="@+id/rectangleView_4" />
 
-    <TextView
-        android:id="@+id/currentTimeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/current_time"
-        app:layout_constraintBottom_toBottomOf="@+id/timePickerButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currTimeZoneDropdown"
-        app:layout_constraintVertical_bias="0.326" />
 
     <TextView
         android:id="@+id/homeTimeActual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:text="@string/home_city_label"
-        app:layout_constraintBottom_toTopOf="@+id/convertTimeLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_zone" />
+        app:layout_constraintBottom_toBottomOf="@+id/rectangleView_3"
+        app:layout_constraintEnd_toEndOf="@+id/rectangleView_3"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/rectangleView_3"
+        app:layout_constraintTop_toBottomOf="@+id/home_zone"
+        app:layout_constraintVertical_bias="0.763" />
+
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Time Zone Converter"
-        android:textColor="#FDFBFB"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/original_time"
+        app:layout_constraintBottom_toTopOf="@+id/timePickerButton"
+        app:layout_constraintEnd_toEndOf="@+id/rectangleView_2"
+        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintStart_toStartOf="@+id/rectangleView_2"
+        app:layout_constraintTop_toTopOf="@+id/rectangleView_2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
