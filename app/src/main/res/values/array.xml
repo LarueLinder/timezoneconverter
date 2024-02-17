@@ -10,4 +10,16 @@
         <item>Australia/Canberra</item>
         <item>America/Honolulu</item>
     </string-array>
+
+    <integer-array name="timezone_calc">
+        <item>-5</item>
+        <item>-8</item>
+        <item>1</item>
+        <item>2</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>-10</item>
+    </integer-array>
+
 </resources>

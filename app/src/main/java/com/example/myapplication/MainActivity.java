@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
@@ -25,6 +26,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Button timeButton;
     int hour;
     int min;
+
+    int input_index;
+
+    //this will have to be the index of the time zone set by the user: NOT DONE
+    int output_index = 1;
 
     private Spinner currTimeZoneDropdown;
 
@@ -51,19 +57,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
+        ImageButton clockConvertsButton = findViewById(R.id.clockConvertButton);
+        int[] time_calc = getResources().getIntArray(R.array.timezone_calc);
+
+        clockConvertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create an Intent to start the SettingsActivity
+                int time_dif = time_calc[output_index] - time_calc[input_index];
+                //add time dif to time to get new time and display
+               // Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+               // startActivity(intent);
+            }
+        });
+
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if (parent.getId() == R.id.currTimeZoneDropdown) {
             String valueFromSpinner = parent.getItemAtPosition(position).toString();
+            input_index = position;
         }
     }
 
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+            input_index = 0;
 
     }
 

@@ -73,6 +73,16 @@
         app:layout_constraintTop_toBottomOf="@+id/home_zone"
         app:layout_constraintVertical_bias="0.0" />
 
+    <ImageButton
+        android:id="@+id/clockConvertButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/settingsButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_recent_history" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
