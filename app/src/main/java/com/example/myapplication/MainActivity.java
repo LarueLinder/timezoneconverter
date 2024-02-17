@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         Button settingButton = findViewById(R.id.settingsButton);
 
-
-
         settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -19,12 +19,11 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteX="1dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/currentZoneText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
         android:text="@string/time_zone"
         app:layout_constraintBottom_toTopOf="@+id/timePickerButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,13 +45,12 @@
         app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/home_zone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="424dp"
         android:ems="10"
-        android:inputType="text"
         android:text="@string/home_zone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
