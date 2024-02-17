@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Locale;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private Spinner currTimeZoneDropdown;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         Button settingButton = findViewById(R.id.settingsButton);
 
+
+
         settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,8 +62,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
+
         ImageButton clockConvertsButton = findViewById(R.id.clockConvertButton);
         int[] time_calc = getResources().getIntArray(R.array.timezone_calc);
+        TextView convertedTimer = findViewById(R.id.convertedTime);
 
         clockConvertsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +73,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 // Create an Intent to start the SettingsActivity
                 int time_dif = time_calc[output_index] - time_calc[input_index];
                 //add time dif to time to get new time and display
-               // Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-               // startActivity(intent);
+                int new_hour = hour + time_dif;
+                convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d",hour, min));
+
             }
         });
 

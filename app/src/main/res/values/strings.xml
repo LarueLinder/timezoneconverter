@@ -6,5 +6,7 @@
     <string name="time_zone">Current Time Zone:</string>
     <string name="home_zone">Home Time Zone:</string>
     <string name="home_city"> Home City: </string>
+    <string name="converted_label"> Converted Time: </string>
+    <string name="converted_time"> Converted Time: </string>
 
 </resources>
