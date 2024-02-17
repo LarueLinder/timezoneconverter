@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
 
+    private static final String shared_prefs_file = "LocationSharedPref";
+    private static final String key_username = "America/New York";
+
     Button timeButton;
     int hour;
     int min;
@@ -44,9 +49,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //set current hometown to correct shared preference
         TextView hometown = findViewById(R.id.homeTimeActual);
-        //String user = sharedPreferences.getString(key_username, )
+        //String home =
+        SharedPreferences sharedPref = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
+        String home = sharedPref.getString(key_username, "America/New York");
+        hometown.setText(home);
 
         timeButton = findViewById(R.id.timePickerButton);
         //set button to current time:

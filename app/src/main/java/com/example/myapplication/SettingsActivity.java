@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +18,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
 
     private static final String shared_prefs_file = "LocationSharedPref";
     private static final String key_username = "America/New York";
-    Button saveButton = findViewById(R.id.saveButton);
+    Button saveButton;
 
     private Spinner currTimeZoneDropdown;
 
@@ -30,6 +31,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_view);
 
+        saveButton = findViewById(R.id.saveButton);
 
         //SharedPreferences file
         SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
@@ -52,6 +54,8 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
                 SharedPreferences.Editor editor = shared.edit();
                 editor.putString(key_username, spinnerResult);
                 editor.apply();
+
+
                 // Create an Intent to start the SettingsActivity
                 Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(intent);
