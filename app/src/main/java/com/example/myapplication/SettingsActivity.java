@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+
     private static final String shared_prefs_file = "LocationSharedPref";
     private static final String key_username = "America/New York";
     Button saveButton = findViewById(R.id.saveButton);
@@ -21,13 +22,17 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     private Spinner currTimeZoneDropdown;
 
     String spinnerResult = "America/New York";
+
+    //Button saveButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_view);
 
+
         //SharedPreferences file
-        SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE;
+        SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
 
         currTimeZoneDropdown = findViewById(R.id.currTimeZoneDropdown);
         String[] time_zones = getResources().getStringArray(R.array.timezone_array);
@@ -36,6 +41,9 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         currTimeZoneDropdown.setAdapter(adapter);
 
 
+
+
+        saveButton = findViewById(R.id.saveButton);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +61,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     }
 
 
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         if (adapterView.getId() == R.id.currTimeZoneDropdown) {
@@ -65,4 +74,5 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     public void onNothingSelected(AdapterView<?> adapterView) {
         //input_index = 0;
     }
+
 }
