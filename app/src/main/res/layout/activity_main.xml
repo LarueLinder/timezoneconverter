@@ -103,6 +103,27 @@
         app:layout_constraintTop_toBottomOf="@+id/convertTimeLabel"
         app:layout_constraintVertical_bias="0.141" />
 
+    <TextView
+        android:id="@+id/currentTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/current_time"
+        app:layout_constraintBottom_toBottomOf="@+id/timePickerButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currTimeZoneDropdown"
+        app:layout_constraintVertical_bias="0.326" />
+
+    <TextView
+        android:id="@+id/homeTimeActual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home_city_label"
+        app:layout_constraintBottom_toTopOf="@+id/convertTimeLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_zone" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

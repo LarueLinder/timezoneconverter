@@ -17,8 +17,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Random;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -41,7 +45,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //set current hometown to correct shared preference
+        TextView hometown = findViewById(R.id.homeTimeActual);
+        //String user = sharedPreferences.getString(key_username, )
+
         timeButton = findViewById(R.id.timePickerButton);
+        //set button to current time:
+        long currentTime = System.currentTimeMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        String timeString = sdf.format(new Date(currentTime));
+        timeButton.setText(timeString);
+
 
         currTimeZoneDropdown = findViewById(R.id.currTimeZoneDropdown);
         String[] time_zones = getResources().getStringArray(R.array.timezone_array);
