@@ -93,11 +93,6 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         if (adapterView.getId() == R.id.currTimeZoneDropdown) {
             String valueFromSpinner = adapterView.getItemAtPosition(i).toString();
             spinnerResult = valueFromSpinner;
-
-            //if spinnerResult is equal to the home then pop up the toast?
-            if(home.equals(spinnerResult)) {
-                Toast.makeText(this,"Home and current timezone are the same", Toast.LENGTH_SHORT).show();
-            }
         }
     }
 
