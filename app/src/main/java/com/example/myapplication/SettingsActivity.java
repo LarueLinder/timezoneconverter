@@ -20,7 +20,8 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     private SharedPreferences sharedPref;
     private String home;
     SharedPreferences.Editor peditor;
-    SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
+    //this needs to be in on create cus context does not get initalized before the on create
+   // SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
     private static final String shared_prefs_file = "LocationSharedPref";
     private static final String key_username = "America/New York";
     Button saveButton;
@@ -35,6 +36,10 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_view);
+
+        //
+        SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
+
 
         saveButton = findViewById(R.id.saveButton);
 
@@ -59,13 +64,22 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //write to shared preferences:
+                //get the selectged time zone from the spinner
+                String spinnerResult = currTimeZoneDropdown.getSelectedItem().toString();
+
+                // check if this equals home
+                if (spinnerResult.equals(home)) {
+                    //display toast
+                    Toast.makeText(SettingsActivity.this, "Home and current timezone are the same", Toast.LENGTH_SHORT).show();
+                    return; //stop it from going to main
+                }
+
+                //save selected time zone to shared pref
                 SharedPreferences.Editor editor = shared.edit();
                 editor.putString(key_username, spinnerResult);
                 editor.apply();
 
-
-                // Create an Intent to start the SettingsActivity
+                //go back to main activity
                 Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(intent);
             }
