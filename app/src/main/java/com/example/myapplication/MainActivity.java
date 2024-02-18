@@ -167,8 +167,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     protected void onPause() {
-
-        //peditor.putString(key_username, home);
+        peditor = sharedPref.edit();
         peditor.putString("timeValue", home);
         peditor.apply();
 
