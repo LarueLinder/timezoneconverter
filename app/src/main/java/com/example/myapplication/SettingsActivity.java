@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +19,8 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
 
     private SharedPreferences sharedPref;
     private String home;
-    //SharedPreferences.Editor peditor;
-    //SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
+    SharedPreferences.Editor peditor;
+    SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
     private static final String shared_prefs_file = "LocationSharedPref";
     private static final String key_username = "America/New York";
     Button saveButton;
@@ -78,6 +79,11 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         if (adapterView.getId() == R.id.currTimeZoneDropdown) {
             String valueFromSpinner = adapterView.getItemAtPosition(i).toString();
             spinnerResult = valueFromSpinner;
+
+            //if spinnerResult is equal to the home then pop up the toast?
+            if(home.equals(spinnerResult)) {
+                Toast.makeText(this,"Home and current timezone are the same", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
