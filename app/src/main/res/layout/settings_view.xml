@@ -5,17 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <View
+        android:id="@+id/rectangle_1"
+        android:layout_width="341dp"
+        android:layout_height="116dp"
+        android:layout_centerVertical="true"
+        android:background="#F1E9E9"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/home_city"
+        app:layout_constraintEnd_toEndOf="@+id/currTimeZoneDropdown"
+        app:layout_constraintStart_toStartOf="@+id/currTimeZoneDropdown"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.474" />
+
     <EditText
         android:id="@+id/home_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="424dp"
+        android:layout_marginBottom="160dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/home_city"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:padding="16dp"
+        android:text="@string/home_city"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -33,10 +47,21 @@
         android:id="@+id/currTimeZoneDropdown"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/home_city"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/rectangle_1" />
+
+    <TextView
+        android:id="@+id/settings_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        app:layout_constraintBottom_toTopOf="@+id/currTimeZoneDropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.252"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.43" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
