@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Date;
 
 import android.util.Log;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -101,6 +102,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 int time_dif = time_calc[output_index] - time_calc[input_index];
                 //add time dif to time to get new time and display
                 int new_hour = hour + time_dif;
+
+                // check if the current timezone is the same as the home timezone
+                String currentTimeZone = currTimeZoneDropdown.getSelectedItem().toString();
+                home = sharedPref.getString("timeValue", "FAIL");
+
+                if (currentTimeZone.equals(home)) {
+                    // display te toast
+                    Toast.makeText(MainActivity.this, "Current and home timezones are the same", Toast.LENGTH_SHORT).show();
+                    return; //dont update the time
+                }
+
                 convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d",hour, min));
 
             }
