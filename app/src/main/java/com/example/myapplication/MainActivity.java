@@ -19,10 +19,7 @@ import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-import java.util.Random;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -42,20 +39,26 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private Spinner currTimeZoneDropdown;
 
-
+    //String home =
+    SharedPreferences sharedPref;
+    //String home = sharedPref.getString(key_username, "America/New York");
+    String home;
+    SharedPreferences.Editor peditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Context context = getApplicationContext(); // app level storage
+        sharedPref = context.getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
+        peditor = sharedPref.edit();
+        peditor.putString(key_username, "America/New York");
+        peditor.apply();
 
         //set current hometown to correct shared preference
-        TextView hometown = findViewById(R.id.homeTimeActual);
-        //String home =
-        SharedPreferences sharedPref = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
-        String home = sharedPref.getString(key_username, "America/New York");
-        hometown.setText(home);
+        //TextView hometown = findViewById(R.id.homeTimeActual);
+       // hometown.setText(home);
 
         timeButton = findViewById(R.id.timePickerButton);
         //set button to current time:
@@ -135,6 +138,39 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         timePickerDialog.setTitle("Select Time");
         timePickerDialog.show();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        home = sharedPref.getString(key_username, "America/New York");
+        TextView hometown = (TextView) findViewById(R.id.homeTimeActual);
+        hometown.setText(home);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+
+        peditor.putString(key_username, home);
+        peditor.apply();
+
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+
+        peditor.putString(key_username, home);
+        peditor.apply();
+
+        super.onStop();
     }
 }
 

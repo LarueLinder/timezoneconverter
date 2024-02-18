@@ -16,6 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SettingsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
+    private SharedPreferences sharedPref;
+    private String home;
+    //SharedPreferences.Editor peditor;
+    //SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
     private static final String shared_prefs_file = "LocationSharedPref";
     private static final String key_username = "America/New York";
     Button saveButton;
@@ -34,15 +38,19 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         saveButton = findViewById(R.id.saveButton);
 
         //SharedPreferences file
-        SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
+
+        Context context = getApplicationContext();
+        sharedPref = context.getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
+        home = sharedPref.getString(key_username, "America/New York");
+        peditor = sharedPref.edit();
+        peditor.putString(key_username, "America/New York");
+        peditor.apply();
 
         currTimeZoneDropdown = findViewById(R.id.currTimeZoneDropdown);
         String[] time_zones = getResources().getStringArray(R.array.timezone_array);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, time_zones);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         currTimeZoneDropdown.setAdapter(adapter);
-
-
 
 
         saveButton = findViewById(R.id.saveButton);
@@ -65,7 +73,6 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     }
 
 
-
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         if (adapterView.getId() == R.id.currTimeZoneDropdown) {
@@ -78,5 +85,16 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     public void onNothingSelected(AdapterView<?> adapterView) {
         //input_index = 0;
     }
+
+    @Override
+    public void onPause() {
+        //write to shared preferences:
+        SharedPreferences.Editor peditor = sharedPref.edit();
+        peditor.putString(key_username, home);
+        peditor.apply();
+        super.onPause();
+
+    }
+
 
 }
