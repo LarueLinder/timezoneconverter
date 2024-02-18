@@ -10,5 +10,6 @@
     <string name="home_city_label">America/New York</string>
     <string name="converted_label"> Converted Time: </string>
     <string name="converted_time"> Converted Time: </string>
+    <string name="context_prefs">CONTEXT_PREFS</string>
 
 </resources>

@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Date;
 
+import android.util.Log;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static final String EXTRA_MESSAGE = "com.example.myapplication.MESSAGE";
@@ -51,10 +53,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         Context context = getApplicationContext(); // app level storage
-        sharedPref = context.getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
-        peditor = sharedPref.edit();
-        peditor.putString(key_username, "America/New York");
-        peditor.apply();
+        sharedPref = context.getSharedPreferences(String.valueOf(R.string.context_prefs), Context.MODE_PRIVATE);
+        //peditor = sharedPref.edit();
+        //peditor.putString("timeValue", "America/New York");
+       // peditor.apply();
+        Log.d("SharedPreferences", "Saved value6: " + sharedPref.getString("timeValue", "FAIL!"));
+
 
         //set current hometown to correct shared preference
         //TextView hometown = findViewById(R.id.homeTimeActual);
@@ -144,7 +148,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onStart() {
         super.onStart();
 
-        home = sharedPref.getString(key_username, "America/New York");
+        //home = sharedPref.getString(key_username, "America/New York");
+        home = sharedPref.getString("timeValue", "America/New York");
         TextView hometown = (TextView) findViewById(R.id.homeTimeActual);
         hometown.setText(home);
 
@@ -152,13 +157,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     protected void onResume() {
+
         super.onResume();
+        home = sharedPref.getString("timeValue", "FAIL");
+        TextView hometown = findViewById(R.id.homeTimeActual);
+        hometown.setText(home);
+        Log.d("SharedPreferences", "Saved value5: " + home); // Log the saved SharedPreferences value
     }
 
     @Override
     protected void onPause() {
 
-        peditor.putString(key_username, home);
+        //peditor.putString(key_username, home);
+        peditor.putString("timeValue", home);
         peditor.apply();
 
         super.onPause();
@@ -167,7 +178,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onStop() {
 
-        peditor.putString(key_username, home);
+        //peditor.putString(key_username, home);
+        peditor.putString("timeValue", home);
         peditor.apply();
 
         super.onStop();
