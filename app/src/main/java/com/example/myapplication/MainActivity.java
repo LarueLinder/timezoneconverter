@@ -184,19 +184,33 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                //convert the selected time to AM/PM format
+                String amPm;
+                if (hourOfDay >= 12) {
+                    amPm = "PM";
+                    if (hourOfDay > 12) {
+                        hourOfDay -= 12;
+                    }
+                } else {
+                    amPm = "AM";
+                    if (hourOfDay == 0) {
+                        hourOfDay = 12;
+                    }
+                }
+
+                timeButton.setText(String.format(Locale.getDefault(), "%02d:%02d %s", hourOfDay, minute, amPm));
+
                 hour = hourOfDay;
                 min = minute;
-                timeButton.setText(String.format(Locale.getDefault(), "%02d:%02d",hour, min));
             }
         };
 
-        int style = AlertDialog.THEME_HOLO_DARK; //can delete/change style
+        int style = AlertDialog.THEME_HOLO_DARK;
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, style, onTimeSetListener, hour, min, true);
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, style, onTimeSetListener, hour, min, false);
 
         timePickerDialog.setTitle("Select Time");
         timePickerDialog.show();
-
     }
 
     @Override
