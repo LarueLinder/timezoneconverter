@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -137,11 +138,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d %s",new_hour_12, min, time));
 
                 Log.d("Test", "here");
+                ImageView cautionSymbol = findViewById(R.id.cautionSymbol);
+
                 // check if the converted time is between 11pm and 7am in the home time zone
                 if (isDoNotDisturbHours(new_hour)) {
                     //do not disturb
                     Log.d("DoNotDisturb", "Do not disturb hours!!");
-                    Toast.makeText(MainActivity.this, "Do not disturb hours", Toast.LENGTH_SHORT).show();
+                    cautionSymbol.setImageResource(R.drawable.baseline_bedtime_24);
+                    cautionSymbol.setVisibility(View.VISIBLE);
+                } else {
+                    cautionSymbol.setVisibility(View.GONE);
                 }
                 //convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d",hour, min));
 
