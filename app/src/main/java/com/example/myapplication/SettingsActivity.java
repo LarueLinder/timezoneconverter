@@ -22,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 
+import java.util.Arrays;
+
 public class SettingsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
@@ -74,6 +76,13 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, time_zones);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         currTimeZoneDropdown.setAdapter(adapter);
+
+        int homeIndex = Arrays.asList(time_zones).indexOf(home);
+        if (homeIndex != -1) {
+            // Set the selection of the spinner to the index of the "home" value
+            currTimeZoneDropdown.setSelection(homeIndex);
+        }
+
         currTimeZoneDropdown.setOnItemSelectedListener(this);
 
 

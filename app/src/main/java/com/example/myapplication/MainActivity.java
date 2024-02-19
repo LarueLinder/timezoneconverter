@@ -53,22 +53,64 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     SharedPreferences.Editor peditor;
 
 
+    void runClick(String[] time_zones, TextView hometown, int[] time_calc, TextView convertedTimer) {
+        // Create an Intent to start the SettingsActivity
+        //String[] time_zones = getResources().getStringArray(R.array.timezone_array);
+        output_index = Arrays.asList(time_zones).indexOf(hometown.getText().toString());
+        int time_dif = time_calc[output_index] - time_calc[input_index];
+        //add time dif to time to get new time and display
+        int new_hour = (hour + time_dif)%24;
+        // check if the current timezone is the same as the home timezone
+        String currentTimeZone = currTimeZoneDropdown.getSelectedItem().toString();
+        home = sharedPref.getString("timeValue", "America/Los Angeles");
+
+        if (currentTimeZone.equals(home)) {
+            // display te toast
+            Toast.makeText(MainActivity.this, "Current and home timezones are the same", Toast.LENGTH_SHORT).show();
+            return; //dont update the time
+        }
+        String time = "AM";
+        int new_hour_12 = new_hour;
+        if(new_hour > 12) {
+            new_hour_12 = new_hour % 12;
+            time = "PM";
+        }
+        convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d %s",new_hour_12, min, time));
+
+        Log.d("Test", "here");
+        ImageView cautionSymbol = findViewById(R.id.cautionSymbol);
+
+        // check if the converted time is between 11pm and 7am in the home time zone
+        if (isDoNotDisturbHours(new_hour)) {
+            //do not disturb
+            Log.d("DoNotDisturb", "Do not disturb hours!!");
+            cautionSymbol.setImageResource(R.drawable.baseline_bedtime_24);
+            cautionSymbol.setVisibility(View.VISIBLE);
+        } else {
+            cautionSymbol.setVisibility(View.GONE);
+        }
+        //convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d",hour, min));
+
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Context context = getApplicationContext(); // app level storage
         sharedPref = context.getSharedPreferences(String.valueOf(R.string.context_prefs), Context.MODE_PRIVATE);
         //peditor = sharedPref.edit();
         //peditor.putString("timeValue", "America/New York");
-       // peditor.apply();
+        // peditor.apply();
         Log.d("SharedPreferences", "Saved value6: " + sharedPref.getString("timeValue", "FAIL!"));
 
 
         //set current hometown to correct shared preference
         //TextView hometown = findViewById(R.id.homeTimeActual);
-       // hometown.setText(home);
+        // hometown.setText(home);
         //set output index to correct home time zone
         TextView hometown = findViewById(R.id.homeTimeActual);
         String[] time_zones = getResources().getStringArray(R.array.timezone_array);
@@ -114,15 +156,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         clockConvertsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                runClick(time_zones, hometown, time_calc, convertedTimer);
                 // Create an Intent to start the SettingsActivity
+                /*
                 String[] time_zones = getResources().getStringArray(R.array.timezone_array);
                 output_index = Arrays.asList(time_zones).indexOf(hometown.getText().toString());
                 int time_dif = time_calc[output_index] - time_calc[input_index];
                 //add time dif to time to get new time and display
-                int new_hour = (hour + time_dif)%24;
+                int new_hour = (hour + time_dif) % 24;
                 // check if the current timezone is the same as the home timezone
                 String currentTimeZone = currTimeZoneDropdown.getSelectedItem().toString();
-                home = sharedPref.getString("timeValue", "FAIL");
+                home = sharedPref.getString("timeValue", "America/Los Angeles");
 
                 if (currentTimeZone.equals(home)) {
                     // display te toast
@@ -131,11 +175,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
                 String time = "AM";
                 int new_hour_12 = new_hour;
-                if(new_hour > 12) {
+                if (new_hour > 12) {
                     new_hour_12 = new_hour % 12;
                     time = "PM";
                 }
-                convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d %s",new_hour_12, min, time));
+                convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d %s", new_hour_12, min, time));
 
                 Log.d("Test", "here");
                 ImageView cautionSymbol = findViewById(R.id.cautionSymbol);
@@ -150,11 +194,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     cautionSymbol.setVisibility(View.GONE);
                 }
                 //convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d",hour, min));
-
+*/
             }
         });
 
     }
+
+
     // check if current time is in do not disturb hours
     private boolean isDoNotDisturbHours(int convertedHour) {
         Log.d("DoNotDisturb", "in function");
@@ -207,6 +253,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         home = sharedPref.getString("timeValue", "America/Los Angeles");
         TextView hometown = (TextView) findViewById(R.id.homeTimeActual);
         hometown.setText(home);
+        int[] time_calc = getResources().getIntArray(R.array.timezone_calc);
+        TextView convertedTimer = findViewById(R.id.convertedTime);
+        String[] time_zones = getResources().getStringArray(R.array.timezone_array);
+        runClick(time_zones, hometown, time_calc, convertedTimer);
         //String[] time_zones = getResources().getStringArray(R.array.timezone_array);
         //output_index = Arrays.asList(time_zones).indexOf(hometown.getText().toString());
         Log.d("Output1", hometown.getText().toString());
@@ -217,7 +267,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onResume() {
 
         super.onResume();
-        home = sharedPref.getString("timeValue", "FAIL");
+        home = sharedPref.getString("timeValue", "America/Los Angeles");
         TextView hometown = findViewById(R.id.homeTimeActual);
         hometown.setText(home);
         Log.d("SharedPreferences", "Saved value5: " + home); // Log the saved SharedPreferences value
