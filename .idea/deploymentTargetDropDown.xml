@@ -10,12 +10,20 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
+<<<<<<< HEAD
                   <value value="$USER_HOME$/.android/avd/Pixel_C_API_28.avd" />
+=======
+                  <value value="$USER_HOME$/.android/avd/Nexus_6_API_26.avd" />
+>>>>>>> 7170848cbeaf3b958238f89d7b65e33f19d18a81
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
+<<<<<<< HEAD
           <timeTargetWasSelectedWithDropDown value="2024-02-19T18:13:51.737224Z" />
+=======
+          <timeTargetWasSelectedWithDropDown value="2024-02-19T19:59:12.086543Z" />
+>>>>>>> 7170848cbeaf3b958238f89d7b65e33f19d18a81
         </State>
       </entry>
     </value>
