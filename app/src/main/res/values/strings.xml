@@ -7,7 +7,7 @@
     <string name="current_time">Current Time:</string>
     <string name="home_zone">Home Time Zone:</string>
     <string name="home_city"> Home City: </string>
-    <string name="home_city_label">America/New York</string>
+    <string name="home_city_label">Baltimore</string>
     <string name="converted_label"> Converted Time: </string>
     <string name="converted_time"> Converted Time: </string>
     <string name="context_prefs">CONTEXT_PREFS</string>

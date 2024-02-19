@@ -84,7 +84,7 @@
         app:layout_constraintVertical_bias="0.424" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/homeCityLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Home City"
@@ -96,8 +96,8 @@
         app:layout_constraintTop_toTopOf="@+id/rectangle_2"
         app:layout_constraintVertical_bias="0.134" />
 
-    <TextView
-        android:id="@+id/textView6"
+    <EditText
+        android:id="@+id/homeCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/home_city_label"
