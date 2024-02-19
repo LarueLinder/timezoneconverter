@@ -7,64 +7,57 @@
     android:background="@color/purple_200"
     tools:context=".MainActivity">
 
-
     <View
         android:id="@+id/rectangleView_1"
         android:layout_width="341dp"
         android:layout_height="116dp"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="52dp"
         android:background="#F1E9E9"
         android:backgroundTint="@color/white"
-        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/rectangleView_2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.152" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <View
         android:id="@+id/rectangleView_2"
         android:layout_width="341dp"
         android:layout_height="116dp"
         android:layout_centerVertical="true"
-        android:layout_marginTop="20dp"
         android:background="#F1E9E9"
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rectangleView_1"
         app:layout_constraintBottom_toTopOf="@+id/rectangleView_3"
-        />
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <View
         android:id="@+id/rectangleView_3"
         android:layout_width="341dp"
         android:layout_height="116dp"
         android:layout_centerVertical="true"
-        android:layout_marginTop="40dp"
         android:background="#F1E9E9"
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rectangleView_2"
         app:layout_constraintBottom_toTopOf="@+id/rectangleView_4"
-        />
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <View
         android:id="@+id/rectangleView_4"
         android:layout_width="341dp"
         android:layout_height="116dp"
         android:layout_centerVertical="true"
-        android:layout_marginTop="20dp"
         android:background="#F1E9E9"
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rectangleView_3"
-        app:layout_constraintBottom_toTopOf="@+id/clockConvertButton"/>
+        app:layout_constraintBottom_toTopOf="@+id/clockConvertButton"
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <Spinner
         android:id="@+id/currTimeZoneDropdown"
