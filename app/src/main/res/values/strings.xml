@@ -14,5 +14,6 @@
     <string name="settingsText">Settings</string>
     <string name="settingsDescription">Settings</string>
     <string name="convertString">convert</string>
+    <string name="set">Settings</string>
 
 </resources>
