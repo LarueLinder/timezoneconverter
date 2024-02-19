@@ -59,7 +59,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         output_index = Arrays.asList(time_zones).indexOf(hometown.getText().toString());
         int time_dif = time_calc[output_index] - time_calc[input_index];
         //add time dif to time to get new time and display
-        int new_hour = (hour + time_dif)%24;
+        //int new_hour = (hour + time_dif)%24;
+        int new_hour = hour + time_dif;
+        if(new_hour < 0) {
+            new_hour = 24 + new_hour;
+        }
+        new_hour = new_hour % 24;
         // check if the current timezone is the same as the home timezone
         String currentTimeZone = currTimeZoneDropdown.getSelectedItem().toString();
         home = sharedPref.getString("timeValue", "America/Los Angeles");
@@ -74,6 +79,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if(new_hour > 12) {
             new_hour_12 = new_hour % 12;
             time = "PM";
+        }
+        if(new_hour_12 == 0) {
+            new_hour_12 = 12;
         }
         convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d %s",new_hour_12, min, time));
 
@@ -232,19 +240,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 //convert the selected time to AM/PM format
                 String amPm;
+                int hourOfDayTemp = hourOfDay;
                 if (hourOfDay >= 12) {
                     amPm = "PM";
                     if (hourOfDay > 12) {
-                        hourOfDay -= 12;
+                        hourOfDayTemp -= 12;
                     }
                 } else {
                     amPm = "AM";
                     if (hourOfDay == 0) {
-                        hourOfDay = 12;
+                        hourOfDayTemp = 12;
                     }
                 }
 
-                timeButton.setText(String.format(Locale.getDefault(), "%02d:%02d %s", hourOfDay, minute, amPm));
+                timeButton.setText(String.format(Locale.getDefault(), "%02d:%02d %s", hourOfDayTemp, minute, amPm));
 
                 hour = hourOfDay;
                 min = minute;
@@ -284,6 +293,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         home = sharedPref.getString("timeValue", "America/Los Angeles");
         TextView hometown = findViewById(R.id.homeTimeActual);
         hometown.setText(home);
+
+
+        long currentTime = System.currentTimeMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a", Locale.getDefault());
+        SimpleDateFormat hour_sdf = new SimpleDateFormat("HH", Locale.getDefault());
+        SimpleDateFormat minute_sdf = new SimpleDateFormat("mm", Locale.getDefault());
+        String timeString = sdf.format(new Date(currentTime));
+        hour = Integer.parseInt(hour_sdf.format(new Date(currentTime)));
+        min = Integer.parseInt(minute_sdf.format(new Date(currentTime)));
+        timeButton.setText(timeString);
+
+        int[] time_calc = getResources().getIntArray(R.array.timezone_calc);
+        TextView convertedTimer = findViewById(R.id.convertedTime);
+        String[] time_zones = getResources().getStringArray(R.array.timezone_array);
+        runClick(time_zones, hometown, time_calc, convertedTimer);
+
         Log.d("SharedPreferences", "Saved value5: " + home); // Log the saved SharedPreferences value
     }
 
