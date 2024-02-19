@@ -69,9 +69,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //set button to current time:
         long currentTime = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        SimpleDateFormat hour_sdf = new SimpleDateFormat("HH", Locale.getDefault());
+        SimpleDateFormat minute_sdf = new SimpleDateFormat("mm", Locale.getDefault());
         String timeString = sdf.format(new Date(currentTime));
+        //hour = hour_sdf.format(new Date(currentTime));
         timeButton.setText(timeString);
-
 
         currTimeZoneDropdown = findViewById(R.id.currTimeZoneDropdown);
         String[] time_zones = getResources().getStringArray(R.array.timezone_array);
@@ -113,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     return; //dont update the time
                 }
 
-                convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d",hour, min));
+                convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d",new_hour, min));
 
             }
         });
