@@ -11,5 +11,12 @@
     <string name="converted_label"> Converted Time: </string>
     <string name="converted_time"> Converted Time: </string>
     <string name="context_prefs">CONTEXT_PREFS</string>
+    <string name="settingsText">Settings</string>
+    <string name="settingsDescription">Settings</string>
+    <string name="convertString">convert</string>
+    <string name="set">Settings</string>
+    <string name="home_time_zone">Home Time Zone</string>
+    <string name="home_city_t">Home City</string>
+    <string name="save_text">Save</string>
 
 </resources>
