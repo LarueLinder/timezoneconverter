@@ -82,13 +82,6 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
                 //get the selectged time zone from the spinner
                 String spinnerResult = currTimeZoneDropdown.getSelectedItem().toString();
 
-                // check if this equals home
-                if (spinnerResult.equals(home)) {
-                    //display toast
-                    Toast.makeText(SettingsActivity.this, "Home and current timezone are the same", Toast.LENGTH_SHORT).show();
-                    return; //stop it from going to main
-                }
-
                 //save selected time zone to shared pref
                 SharedPreferences.Editor editor = shared.edit();
                 editor.putString(key_username, spinnerResult);
