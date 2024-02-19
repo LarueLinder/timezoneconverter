@@ -18,8 +18,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.Date;
+import java.util.TimeZone;
 
 import android.util.Log;
 import android.widget.Toast;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     //String home = sharedPref.getString(key_username, "America/New York");
     String home;
     SharedPreferences.Editor peditor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,11 +116,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     return; //dont update the time
                 }
 
+                Log.d("Test", "here");
+                // check if the converted time is between 11pm and 7am in the home time zone
+                if (isDoNotDisturbHours(new_hour)) {
+                    //do not disturb
+                    Log.d("DoNotDisturb", "Do not disturb hours!!");
+                    Toast.makeText(MainActivity.this, "Do not disturb hours", Toast.LENGTH_SHORT).show();
+                }
                 convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d",hour, min));
 
             }
         });
 
+    }
+    // check if current time is in do not disturb hours
+    private boolean isDoNotDisturbHours(int convertedHour) {
+        Log.d("DoNotDisturb", "in function");
+        Log.d("DoNotDisturb", String.valueOf(convertedHour));
+        return convertedHour >= 23 || convertedHour < 7;
     }
 
     @Override
