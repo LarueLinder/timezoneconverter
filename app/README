@@ -1,0 +1,14 @@
+Lulu Grubb, lgrubb3, Larue Linder llinder3
+
+For this code, we chose not to include the GMT notation as we thought it may be confusing for the
+user, and we thought we should keep the app simple by only showing the time. In our opinion, it
+makes sense to have multiple activities because the Settings and Main Activities perform different
+functions and Settings has the Home City editor that is not used in the Main Activity. Also, in
+general, one Activity implements one screen/view in an App, and we wanted to save and restore
+instance data as activities move in and out of visibility, so two Activities made the most sense.
+In order to test the code, we ran the clock with multiple combinations of location and AM/PM and
+checked the results against the “World Clock” feature on the iOS Clock application. Our base test
+was NYC/LA with the current time. The most challenging part of the app was the SharedPreferences,
+especially when we first made them. Understanding when and when not to save data into
+SharedPreferences was difficult, but we now have a better grasp on the concept.
+
