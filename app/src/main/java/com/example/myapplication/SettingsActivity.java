@@ -34,8 +34,6 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     private String city;
     SharedPreferences.Editor cityEdit;
     SharedPreferences.Editor peditor;
-    //this needs to be in on create cus context does not get initalized before the on create
-   // SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
     private static final String shared_prefs_file = "LocationSharedPref";
     private static final String key_username = "timeValue";
     Button saveButton;
@@ -51,13 +49,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_view);
 
-        //
-        //SharedPreferences shared = getSharedPreferences(shared_prefs_file, Context.MODE_PRIVATE);
-
-
         saveButton = findViewById(R.id.saveButton);
-
-        //SharedPreferences file
 
         Context context = getApplicationContext();
         sharedPref = context.getSharedPreferences(String.valueOf(R.string.context_prefs), Context.MODE_PRIVATE);
@@ -65,11 +57,6 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
 
         cityPref = context.getSharedPreferences(String.valueOf(R.string.context_prefs), Context.MODE_PRIVATE);
         city = cityPref.getString("city", "Baltimore");
-        //peditor = sharedPref.edit();
-        //peditor.putString(key_username, "America/New York");
-        //peditor.apply();
-
-        Log.d("SharedPreferences", "Saved value: " + home); // Log the saved SharedPreferences value
 
         currTimeZoneDropdown = findViewById(R.id.currTimeZoneDropdown);
         String[] time_zones = getResources().getStringArray(R.array.timezone_array);
@@ -118,18 +105,6 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
                 peditor.putString("timeValue", spinnerResult);
                 peditor.apply();
 
-                Log.d("SharedPreferences", "Saved value1: " + spinnerResult); // Log the saved SharedPreferences value
-
-                // Create an Intent to start the SettingsActivity
-
-                //get the selectged time zone from the spinner
-                //String spinnerResult = currTimeZoneDropdown.getSelectedItem().toString();
-
-                //save selected time zone to shared pref
-                //SharedPreferences.Editor editor = shared.edit();
-                //editor.putString(key_username, spinnerResult);
-                //editor.apply();
-
                 //go back to main activity
                 Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -143,26 +118,19 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         if (adapterView.getId() == R.id.currTimeZoneDropdown) {
             spinnerResult = adapterView.getItemAtPosition(i).toString();
-            //spinnerResult = valueFromSpinner;
         }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-        //input_index = 0;
     }
 
     @Override
     public void onPause() {
         //write to shared preferences:
         SharedPreferences.Editor peditor = sharedPref.edit();
-        //peditor.putString(key_username, home);
         peditor.putString("timeValue", spinnerResult);
-
         peditor.apply();
-        Log.d("SharedPreferences", "Saved value2: " + sharedPref.getString("timeValue", "failed")); // Log the saved SharedPreferences value
         super.onPause();
-
     }
-
 }
