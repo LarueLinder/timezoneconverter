@@ -203,6 +203,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
                 //convertedTimer.setText(String.format(Locale.getDefault(), "%02d:%02d",hour, min));
 */
+                //c
             }
         });
 
